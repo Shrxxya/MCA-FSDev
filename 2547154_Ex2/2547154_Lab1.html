@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Tails Vet Hospital & Kennel Center</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/49e4f3888f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a id="logo-text" href="#">
+            <div class="header">
+                <img class="logo" src="logo.png"/>
+                <h1 class="font-sans font-semibold text-4xl">Happy Tails Veterinary Hospital & Kennel Center</h1>
+            </div>
+        </a>
+        <nav class="bg-gray-800">
+                <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                    <div class="relative flex h-16 items-center justify-between">
+                        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                            <!-- Mobile menu button-->
+                            <button type="button"
+                                class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
+                                aria-controls="mobile-menu" aria-expanded="false">
+                                <span class="absolute -inset-0.5"></span>
+                                <span class="sr-only">Open main menu</span>
+                                <!--
+                        Icon when menu is closed.
+
+                        Menu open: "hidden", Menu closed: "block"
+                    -->
+                                <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                                <!--
+                        Icon when menu is open.
+
+                        Menu open: "block", Menu closed: "hidden"
+                    -->
+                                <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                            <div class="flex shrink-0 items-center">
+                                <img class="h-8 w-auto"
+                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                                    alt="Your Company" />
+                            </div>
+                            <div class="hidden sm:ml-6 sm:block">
+                                <div class="flex space-x-4">
+                                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                                    <a href="index.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
+                                        <i class="fa-solid fa-house pr-2"></i>Home</a>
+                                    <a href="2547154_Lab1ContactUs.html"
+                                        class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                        <i class="fa-solid fa-location-dot pr-2"></i>Places</a>
+                                    <a href="#"
+                                        class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        aria-current="page">
+                                        <i class="fa-solid fa-images pr-2"></i>Gallery</a>
+                                    <a href="2547154_FunFacts.html"
+                                        class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                        <i class="fa-solid fa-phone pr-2"></i>Contact</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Mobile menu, show/hide based on menu state. -->
+                    <div class="sm:hidden" id="mobile-menu">
+                        <div class="space-y-1 px-2 pt-2 pb-3">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="index.html" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">
+                            <i class="fa-solid fa-house pr-2"></i>Home</a>
+                            <a href="2547154_Lab1ContactUs.html"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Places</a>
+                            <a href="#"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                                aria-current="page">Gallery</a>
+                            <a href="2547154_FunFacts.html"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+                        </div>
+                    </div>
+            </nav>
+    </header>
+    
+    <section>
+        <figure class="vet-images flex flex-col md:flex-row md:justify-between space-y-4 md:space-y-0 md:space-x-4">
+            <img class="w-full md:w-[23%] object-cover rounded" src="vetpic2.jpg" alt="Vet Pic 2"/>
+            <img class="w-full md:w-[23%] object-cover rounded" src="vetpic1.jpg" alt="Vet Pic 1"/>
+            <img class="w-full md:w-[23%] object-cover rounded" src="vetpic3.jpg" alt="Vet Pic 3"/>
+            <img class="w-full md:w-[23%] object-cover rounded" src="vetpic4.jpg" alt="Vet Pic 4"/>
+        </figure>
+        <p class="about">Being the best <i class="fa-solid fa-thumbs-up"></i> Veterinary Hospital & Kennel Center, we put your pets first, making sure they are getting <br>the care they need and you get the peace of mind you deserve. We are committed to providing<br> on-going professional and personalized care for you and your pets.</p>
+        <p class="about">From emergency care and high-tech diagnosis to planned surgeries and preventative care,<br>we offer a complete range of medical services and treatment under one roof.</p>
+    </section>
+    <div class="services mb-10">
+        <p class="services-label">Our Services:</p>
+
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            <div class="service-marquee-list">
+                <p>In-Patient</p>
+                <p>Out-Patient</p>
+                <p>Radiology</p>
+                <p>Pathology</p>
+                <p>Kennel/Boarding</p>
+            </div>
+        </marquee>
+    </div>
+    <div class="text-center flex justify-center items-center w-full">
+        <video controls>
+            <source src="videoplayback.mp4" type="video/mp4">
+            <track src="videoplayback.mp4.vtt" kind="subtitles" srclang="en" label="English">
+            Your browser does not support the video element.
+        </video>
+    </div>
+    <section class="sec-2 my-10">
+        <p class="about">The pet industry is a booming <i class="fa-solid fa-burst"></i> industry and people naturally expect top-of-the-line care <br>for their beloved pets. Here at The Happy Tails Veterinary Hospital and Kennel Center we understand that <br>and aim to provide the best care across the world
+            <span class="inline-flex items-center ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 150 150">
+                    <!-- Outer circle (globe) -->
+                    <circle cx="75" cy="75" r="70" stroke="black" stroke-width="3" fill="#87CEEB" />
+                    <!-- Vertical (longitude) lines -->
+                    <ellipse cx="75" cy="75" rx="50" ry="70" fill="none" stroke="black" stroke-width="1" />
+                    <ellipse cx="75" cy="75" rx="30" ry="70" fill="none" stroke="black" stroke-width="1" />
+                    <ellipse cx="75" cy="75" rx="10" ry="70" fill="none" stroke="black" stroke-width="1" />
+                    <!-- Horizontal (latitude) lines -->
+                    <ellipse cx="75" cy="75" rx="70" ry="50" fill="none" stroke="black" stroke-width="1" />
+                    <ellipse cx="75" cy="75" rx="70" ry="30" fill="none" stroke="black" stroke-width="1" />
+                    <ellipse cx="75" cy="75" rx="70" ry="10" fill="none" stroke="black" stroke-width="1" />
+                </svg>
+            </span>.</p>
+    </section>
+
+    <footer class="footer">
+        <p>Shreeya Bajpai</p><p>28th June 2025</p>
+        <p>Happy Tails Vet Hospital & Kennel Center is a registered trademark of VHKC Services Pvt. Ltd.</p>
+    </footer>
+</body>
+<style>
+    .logo{
+        height: 140px;
+        width: 140px;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+    }
+    .footer{
+        /* position: absolute;
+        bottom: 0px; */
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        color: darksalmon;
+        font-family: Arial, sans-serif;
+    }
+    .navbar{
+        display: flex;
+        justify-content: flex-end;
+        background-color: #fa2878;
+        position:absolute;
+        left: 0;
+        right: 0;
+        /* border-radius: 8px; */
+        font-family: helvetica;
+        font-weight: 600;
+    }
+    .navbar>p{
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 100px;
+    }
+    .navbar:hover{
+        height: 51.26px;
+    }
+    .vet-images{
+        padding-top: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .about{
+        text-align: center;
+        font-size: 25px;
+        color: #302d2d;
+    }
+    .sec-2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #logo-text{
+        text-decoration: none;
+        color: #292827;
+        font-family: arial sans-serif;
+        display: block;
+        width: 660px;
+    }
+    #nav-link{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-style: bold;
+    }
+    #nav-link:hover{
+        font-size: 18px;
+    }
+    .services {
+        width: 100%;
+        position: relative;
+        padding-left: 150px; /* Make space for the label */
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 20px;
+        color: #302d2d;
+    }
+    video {
+        max-height: 500px;  /* Change this value to the height you want */
+        width: 600px;
+    }
+
+    .services-label {
+        position: absolute;
+        left: 10px;
+        color: #fa2878;
+        font-weight: 600;
+    }
+
+    .service-marquee-list {
+        display: flex;
+        gap: 40px;
+        width: max-content; /* Allow scrolling */
+    }
+
+</style>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Tails Vet Hospital & Kennel Center</title>
+    <script src="https://kit.fontawesome.com/49e4f3888f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a id="logo-text" href="2547154_Lab1.html">
+            <div class="header">
+                <img class="logo" src="logo.png"/>
+                <h1>Happy Tails Veterinary Hospital & Kennel Center</h1>
+            </div>
+        </a>
+        <nav class="navbar">
+            <p><a id="nav-link" href="2547154_Lab1.html">Home</a></p>
+            <p><a id="nav-link" href="2547154_Lab1Login.html">Login</a></p>
+            <p><a id="nav-link" href="#">Contact Us</a></p>
+            <p><a id="nav-link" href="2547154_Lab1Feedback.html">Feedback</a></p>
+        </nav>
+    </header>
+    <section>
+        <h2>Find current location in map</h2>
+        <!-- <a href="#" onclick="getLocation()">Get Current Location</a><br> -->
+        <div class="wrapper">
+            <div id="map">
+            <iframe id="google_map" width="500" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in?output=embed"></iframe>
+            </div>
+            <div>
+                <button id="savebtn" onclick="getLocation()"><i class="fa-solid fa-map-pin pr-4"></i>Find Our Nearest Hospital</button>
+                <p id="our_loc">Our Location: <br></p>
+                <p id="lat"></p>
+                <p id="longi"></p>
+                <!-- <p id="coords" class="coords"></p> -->
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>Shreeya Bajpai</p><p>28th June 2025</p>
+        <p>Happy Tails Vet Hospital & Kennel Center is a registered trademark of VHKC Services Pvt. Ltd.</p>
+    </footer>
+</body>
+<script>
+    // window.onload(getLocation());
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition(c);
+        return false;
+    }
+
+    var c = function(pos) {
+        var latitude = pos.coords.latitude;
+        var longitude = pos.coords.longitude;
+        var coords = latitude+','+longitude;
+
+        document.getElementById('google_map').setAttribute('src','https://maps.google.co.in?q='+coords+'&z=17&output=embed');
+        document.getElementById('lat').textContent = "Latitude: "+ latitude;
+        document.getElementById('longi').textContent = "Longitude: "+ longitude;
+        document.getElementById('our_loc').style.display = 'block';
+    }     
+</script>
+<style>
+.logo{
+        height: 140px;
+        width: 140px;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+    }
+    .footer{
+        /* position: absolute;
+        bottom: 0px; */
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        color: darksalmon;
+        font-family: Arial, sans-serif;
+    }
+    .navbar{
+        display: flex;
+        justify-content: flex-end;
+        background-color: #fa2878;
+        position:absolute;
+        left: 0;
+        right: 0;
+        /* border-radius: 8px; */
+        font-family: helvetica;
+        font-weight: 600;
+    }
+    .navbar>p{
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 100px;
+    }
+    .navbar:hover{
+        height: 51.26px;
+    }
+    .wrapper{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #logo-text{
+        text-decoration: none;
+        color: #292827;
+        font-family: arial sans-serif;
+        display: block;
+        width: 660px;
+    }
+    #nav-link{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-style: bold;
+    }
+    #nav-link:hover{
+        font-size: 18px;
+    }
+    #savebtn {
+        padding: 10px 20px;
+        margin-top: 25px;
+        background-color: #fa2878;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        height: 40px;
+        }
+        #savebtn:hover {
+        background-color: #d11f66;
+    }
+    #our_loc{
+        display:none;
+    }
+</style>
+</html>

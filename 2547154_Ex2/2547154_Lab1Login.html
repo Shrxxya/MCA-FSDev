@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Tails Vet Hospital & Kennel Center</title>
+</head>
+<body>
+    <header>
+        <a id="logo-text" href="2547154_Lab1.html">
+            <div class="header">
+                <img class="logo" src="logo.png"/>
+                <h1>Happy Tails Veterinary Hospital & Kennel Center</h1>
+            </div>
+        </a>
+        <nav class="navbar">
+            <p><a id="nav-link" href="2547154_Lab1.html">Home</a></p>
+            <p><a id="nav-link" href="#">Login</a></p>
+            <p><a id="nav-link" href="2547154_Lab1ContactUs.html">Contact Us</a></p>
+            <p><a id="nav-link" href="2547154_Lab1Feedback.html">Feedback</a></p>
+        </nav>
+    </header>
+    <p class="heading">Log In Now</p>
+    <div class="form-wrapper">
+        <div class="login-form">
+            <p>Name</p>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <p>Phone Number</p>
+            <input type="text" id="pno" name="pno" placeholder="Enter your phone number">
+            <p>Email</p>
+            <input type="text" id="email" name="email" placeholder="Enter your email ID">
+            <p>Password</p>
+            <input type="text" id="pwd" name="pwd" placeholder="Set your password">
+            <button id="savebtn">Save</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Shreeya Bajpai</p><p>28th June 2025</p>
+        <p>Happy Tails Vet Hospital & Kennel Center is a registered trademark of VHKC Services Pvt. Ltd.</p>
+    </footer>
+</body>
+<!-- <script>
+  function saveDetails() {
+    const nameValue = document.getElementById("name").value;
+    const pnoValue = document.getElementById("pno").value;
+    const emailValue = document.getElementById("email").value;
+    const pwdValue = document.getElementById("pwd").value;
+    localStorage.setItem("username", nameValue);
+    localStorage.setItem("phoneno", pnoValue);
+    localStorage.setItem("emailid", emailValue);
+    localStorage.setItem("password", pwdValue);
+    alert("Details saved!");
+  }
+
+</script> -->
+<style>
+.logo{
+        height: 140px;
+        width: 140px;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+    }
+    .footer{
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        color: darksalmon;
+        font-family: Arial, sans-serif;
+    }
+    .navbar{
+        display: flex;
+        justify-content: flex-end;
+        background-color: #fa2878;
+        position:absolute;
+        left: 0;
+        right: 0;
+        /* border-radius: 8px; */
+        font-family: helvetica;
+        font-weight: 600;
+    }
+    .navbar>p{
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 100px;
+    }
+    .navbar:hover{
+        height: 51.26px;
+    }
+    .heading{
+        padding-top: 80px;
+        color: #292827;
+        font-family: arial sans-serif;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 600;
+    }
+    #logo-text{
+        text-decoration: none;
+        color: #292827;
+        font-family: arial sans-serif;
+        display: block;
+        width: 660px;
+    }
+    #nav-link{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-style: bold;
+    }
+    #nav-link:hover{
+        font-size: 18px;
+    }
+.form-wrapper{
+    display: flex;
+    justify-content: center;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    border: solid #fa2878 2px;
+    border-radius: 20px;
+    width: max-content;
+    padding: 50px;
+    font-family: Arial, sans-serif;
+}
+.login-form input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+.login-form input[type="text"]:focus {
+  border-color: #fa2878;
+  outline: none;
+}
+#savebtn {
+  padding: 10px 20px;
+  margin-top: 25px;
+  background-color: #fa2878;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#savebtn:hover {
+  background-color: #d11f66;
+}
+</style>
+</html>
