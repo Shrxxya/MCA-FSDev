@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CoffeeHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <!-- <script src="https://kit.fontawesome.com/49e4f3888f.js" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <div class="bg-white">
+        <header class="absolute inset-x-0 top-0 z-50">
+            <a id="logo-text" href="#">
+                <div class="header">
+                    <img class="logo" src="coffee_logo.png" />
+                    <!-- <h1 class="font-sans font-semibold text-4xl">COFFEEHUB</h1> -->
+                    <h1 class="font-semibold tracking-tight text-5xl text-balance text-[#382b2b]">CoffeeHub</h1>
+                </div>
+            </a>
+            <nav class="bg-gray-800">
+                <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                    <div class="relative flex h-16 items-center justify-between">
+                        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                            <!-- Mobile menu button-->
+                            <button type="button"
+                                class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
+                                aria-controls="mobile-menu" aria-expanded="false">
+                                <span class="absolute -inset-0.5"></span>
+                                <span class="sr-only">Open main menu</span>
+                                <!--
+                        Icon when menu is closed.
+
+                        Menu open: "hidden", Menu closed: "block"
+                    -->
+                                <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                                <!--
+                        Icon when menu is open.
+
+                        Menu open: "block", Menu closed: "hidden"
+                    -->
+                                <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                            <div class="flex shrink-0 items-center">
+                                <img class="h-8 w-auto"
+                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" />
+                            </div>
+                            <div class="hidden sm:ml-6 sm:block">
+                                <div class="flex space-x-4">
+                                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                                    <a href="index.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                                        aria-current="page">
+                                        <i class="fa-solid fa-house pr-2"></i>Home</a>
+                                    <a href="know_more.html"
+                                        class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                        <i class="fa-solid fa-mug-hot pr-2"></i>Know More</a>
+                                    <!-- <a href="2547154_Lab1.html"
+                                        class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                        <i class="fa-solid fa-images pr-2"></i>Gallery</a> -->
+                                    <a href="#"
+                                        class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                        <i class="fa-solid fa-phone pr-2"></i>Contact</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Mobile menu, show/hide based on menu state. -->
+                    <div class="sm:hidden" id="mobile-menu">
+                        <div class="space-y-1 px-2 pt-2 pb-3">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="index.html" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                                aria-current="page">
+                                <i class="fa-solid fa-house pr-2"></i>Home</a>
+                            <a href="know_more.html"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                <i class="fa-solid fa-mug-hot pr-2"></i>Know More</a>
+                            <!-- <a href="#"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a> -->
+                            <a href="#"
+                                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                <i class="fa-solid fa-phone pr-2"></i>Contact</a>
+                        </div>
+                    </div>
+            </nav>
+            <!-- Mobile menu, show/hide based on menu open state. -->
+            <div class="lg:hidden" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div class="space-y-2 py-6">
+                                <a href="index.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                    <i class="fa-solid fa-house pr-2"></i>Home</a>
+                                <a href="know_more.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                    <i class="fa-solid fa-mug-hot pr-2"></i>Know More</a>
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                    <i class="fa-solid fa-phone pr-2"></i>Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <section class="relative top-[250px]">
+        <article id="feedback-received" class="feedback-received">
+            <p id="recvd-name"></p>
+            <p id="recvd-fav"></p>
+        </article>
+        <h2 class="font-semibold text-3xl text-center w-full tracking-tight text-balance text-[#382b2b]">
+            Tell Us About Yourself
+        </h2>
+        <div class="flex justify-center items-center w-full mb-10">
+            <form class="login-form" action="" method="">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+                <label for="name">Email</label>
+                <input type="text" id="email" placeholder="Enter your email ID">
+                <label for="fav">Favourite Coffee</label>
+                <input type="text" id="fav" placeholder="Enter your favourite coffee">
+                <button onclick="saveDetails()" id="savebtn">Submit</button>
+            </form>
+        </div>
+    </section>
+    <section class="relative top-[300px]">
+        <h2 class="font-semibold text-xl text-center w-full tracking-tight text-balance text-[#382b2b]">Find current location in map</h2>
+        <div class="wrapper">
+            <div id="map">
+            <iframe id="google_map" width="500" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in?output=embed"></iframe>
+            </div>
+            <div>
+                <button id="savebtn" onclick="getLocation()"><i class="fa-solid fa-map-pin pr-4"></i>Find Our Nearest Outlet</button>
+                <p id="our_loc">Our Location: <br></p>
+                <p id="lat"></p>
+                <p id="longi"></p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>Shreeya Bajpai</p>
+        <p>17th July 2025</p>
+        <p>CoffeeHub is a copyright of CoffeeHolics Pvt. Ltd.</p>
+    </footer>
+</body>
+<script>
+    // window.onload(getLocation());
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition(c);
+        return false;
+    }
+
+    var c = function(pos) {
+        var latitude = pos.coords.latitude;
+        var longitude = pos.coords.longitude;
+        var coords = latitude+','+longitude;
+
+        document.getElementById('google_map').setAttribute('src','https://maps.google.co.in?q='+coords+'&z=17&output=embed');
+        document.getElementById('lat').textContent = "Latitude: "+ latitude;
+        document.getElementById('longi').textContent = "Longitude: "+ longitude;
+        document.getElementById('our_loc').style.display = 'block';
+    }     
+    // function saveDetails(){
+    //         console.log("inside func");
+    //         let name = document.getElementById(name);
+    //         let email = document.getElementById(email);
+    //         let fav = document.getElementById(fav);
+    //         if (name.innerHTML=="" || email.innerHTML=="" || fav.innerHTML==""){
+    //             console.log("inside empty if");
+    //             window.alert("Please fill the form completely!")
+    //         }
+    //         if(!email.innerHTML.includes("@")){
+    //             console.log("inside email if");           
+    //             window.alert("Please enter valid email id!")
+    //         }
+    // }
+    function saveDetails() {
+    const nameValue = document.getElementById("name").value;
+    const emailValue = document.getElementById("email").value;
+    const favValue = document.getElementById("fav").value;
+    localStorage.setItem("username", nameValue);
+    localStorage.setItem("emailid", emailValue);
+    localStorage.setItem("favourite", favValue);
+    alert("Details saved!");
+    showDetails();
+  }
+  function fetchDetails(){
+    const nameValue2 = localStorage.getItem("username");
+    const emailValue2 = localStorage.getItem("email");
+    const favValue2 = localStorage.getItem("favourite");
+  }
+  function showDetails(){
+    const savedName = localStorage.getItem("username");
+    if (savedName) {
+      document.getElementById("recvd-name").textContent = "Hello, " + savedName;
+    }
+    const savedComms = localStorage.getItem("favourite");
+    if (savedComms) {
+      document.getElementById("recvd-fav").textContent = "! You Love: " + savedComms;
+    }
+  }
+
+//   window.onload = function() {
+//     showDetails();
+//   };
+</script>
+<style>
+.logo{
+        height: 140px;
+        width: 140px;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+    }
+    .footer{
+        position: fixed;
+        bottom: -20px;
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        color: darksalmon;
+        font-family: Arial, sans-serif;
+    }
+    .navbar{
+        display: flex;
+        justify-content: flex-end;
+        background-color: #fa2878;
+        position:absolute;
+        left: 0;
+        right: 0;
+        /* border-radius: 8px; */
+        font-family: helvetica;
+        font-weight: 600;
+    }
+    .navbar>p{
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 100px;
+    }
+    .navbar:hover{
+        height: 51.26px;
+    }
+    .wrapper{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+        .form-wrapper{
+    display: flex;
+    justify-content: center;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    border: solid #403131 2px;
+    border-radius: 20px;
+    width: max-content;
+    padding: 50px;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+}
+.login-form input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+.login-form input[type="text"]:focus {
+  border-color: #403131;
+  outline: none;
+}
+#savebtn {
+  padding: 10px 20px;
+  margin-top: 25px;
+  background-color: #403131;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#savebtn:hover {
+  background-color: #755959;
+}
+    #logo-text{
+        text-decoration: none;
+        color: #292827;
+        font-family: arial sans-serif;
+        display: block;
+        width: 660px;
+    }
+    #nav-link{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-style: bold;
+    }
+    #nav-link:hover{
+        font-size: 18px;
+    }
+    #our_loc{
+        display:none;
+    }
+</style>
+</html>
