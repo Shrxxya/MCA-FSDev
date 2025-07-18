@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Tails Vet Hospital & Kennel Center</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/49e4f3888f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a id="logo-text" href="#">
+            <div class="header">
+                <img class="logo" src="logo.png"/>
+                <h1 class="font-sans text-gray-950 font-semibold text-4xl">Happy Tails Veterinary Hospital & Kennel Center</h1>
+            </div>
+        </a>
+    </header>
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+            <div class="relative opacity-50 z-0 inset-0 bg-cover bg-center bg-no-repeat text-white">
+                <div class="text-center">
+                    <p class="heading pb-9 text-3xl font-semibold tracking-tight text-balance text-gray-900 sm:text-4xl">Provide us your service details</p>
+                        <div class="form-wrapper">
+                            <div class="login-form">
+                                <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Full Name</p>
+                                <input type="text" id="name" name="name" placeholder="Enter your name">
+                                <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Email</p>
+                                <input type="text" id="email" name="email" placeholder="Enter your email ID">
+                                <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Breed</p>
+                                <input type="text" id="breed" name="breed" placeholder="Enter the breed">
+                                <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Type of Service</p>
+                                <div class="flex justify-center gap-x-6 mt-2">
+                                    <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                        <input type="radio" name="serviceType" value="IPD" class="text-gray-600 focus:ring-pink-500"> IPD
+                                    </label>
+                                    <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                        <input type="radio" name="serviceType" value="OPD" class="text-gray-600 focus:ring-pink-500"> OPD
+                                    </label>
+                                </div>
+                                <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Lab Service</p>
+                                <div class="flex justify-center gap-x-6 mt-2">
+                                    <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                        <input type="checkbox" name="labService" value="Medicines" class="text-gray-600 focus:ring-pink-500"> Medicines
+                                    </label>
+                                    <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                        <input type="checkbox" name="labService" value="X-Ray" class="text-gray-600 focus:ring-pink-500"> X-Ray
+                                    </label>
+                                    <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                        <input type="checkbox" name="labService" value="Blood Tests" class="text-gray-600 focus:ring-pink-500"> Blood Tests
+                                    </label>
+                                </div>
+                                <button id="savebtn" onclick="saveDetails()">Save</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mb-25">
+                            <article id="feedback-received" class="flex flex-col items-center mt-8 pb-12 text-center text-lg font-medium text-gray-900 border border-gray-300 p-6 rounded-lg w-1/2 hidden">
+                                <p id="recvd-name"></p>
+                                <p id="recvd-email"></p>
+                                <p id="recvd-breed"></p>
+                                <p id="recvd-comm"></p>
+                                <p id="recvd-check"></p>
+                            </article>
+                        </div>
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+    </div>
+    <footer class="footer">
+        <p>Shreeya Bajpai</p><p>28th June 2025</p>
+        <p>Happy Tails Vet Hospital & Kennel Center is a registered trademark of VHKC Services Pvt. Ltd.</p>
+    </footer>
+</body>
+<script>
+  function saveDetails() {
+    event.preventDefault();
+    const nameValue = document.querySelector("#name").value;
+    const emailValue = document.querySelector("#email").value;
+    const breedValue = document.querySelector("#breed").value;
+    const selected = document.querySelector('input[name="serviceType"]:checked');
+    const selectedService = selected.value;
+    const selectedCheckboxes = document.querySelectorAll('input[name="labService"]:checked');
+    const labServices = Array.from(selectedCheckboxes).map(cb => cb.value);
+    localStorage.setItem("username", nameValue);
+    localStorage.setItem("email", emailValue);
+    localStorage.setItem("breed", breedValue);
+    localStorage.setItem("serviceType", selectedService);
+    localStorage.setItem("labServices", JSON.stringify(labServices));
+    alert("Feedback received!");
+    showDetails();
+  }
+    function showDetails() {
+        document.getElementById("recvd-name").textContent = "Name: " + localStorage.getItem("username");
+        document.getElementById("recvd-email").textContent = "Email: " + localStorage.getItem("email");
+        document.getElementById("recvd-breed").textContent = "Breed: " + localStorage.getItem("breed");
+        document.getElementById("recvd-comm").textContent = "Service: " + localStorage.getItem("serviceType");
+        const labs = JSON.parse(localStorage.getItem("labServices"));
+        if (labs && labs.length > 0) {
+            document.getElementById("recvd-check").textContent += "\nLab Services: " + labs.join(", ");
+        }
+        document.getElementById("feedback-received").classList.remove("hidden");
+        document.getElementById("feedback-received").classList.add("block");
+        
+    }
+        document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+        input.addEventListener('change', function () {
+            document.querySelectorAll('label').forEach(label => {
+            label.classList.remove('highlighted');
+            });
+            if (this.checked) {
+            this.parentNode.classList.add('highlighted');
+            }
+        });
+        });
+
+
+
+//   window.onload = function() {
+//     showDetails();
+//   };
+</script>
+<style>
+.logo{
+        height: 140px;
+        width: 140px;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+    }
+    .footer{
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        color: darksalmon;
+        font-family: Arial, sans-serif;
+    }
+    .navbar{
+        display: flex;
+        justify-content: flex-end;
+        background-color: #fa2878;
+        position:absolute;
+        left: 0;
+        right: 0;
+        /* border-radius: 8px; */
+        font-family: helvetica;
+        font-weight: 600;
+    }
+    .navbar>p{
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 100px;
+    }
+    .navbar:hover{
+        height: 51.26px;
+    }
+
+    #logo-text{
+        text-decoration: none;
+        color: #292827;
+        font-family: arial sans-serif;
+        display: block;
+        width: 660px;
+    }
+    #nav-link{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-style: bold;
+    }
+    #nav-link:hover{
+        font-size: 18px;
+    }
+.form-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    border: solid #fa2878 2px;
+    border-radius: 20px;
+    width: max-content;
+    padding: 50px;
+    /* font-family: Arial, sans-serif; */
+}
+.login-form input{
+    color: black;
+}
+.login-form input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  /* font-size: 16px; */
+  transition: border-color 0.3s;
+}
+.login-form input[type="text"]:focus {
+  border-color: #fa2878;
+  outline: none;
+}
+#savebtn {
+  padding: 10px 20px;
+  margin-top: 25px;
+  background-color: #fa2878;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#savebtn:hover {
+  background-color: #d11f66;
+}
+#feedback-received p {
+  margin: 4px 0;
+}
+.highlighted {
+  background-color: #fa2878; /* Tailwind's bg-pink-500 */
+  color: white;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+</style>
+</html>
