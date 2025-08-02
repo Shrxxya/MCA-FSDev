@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Harvard School of Business</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/49e4f3888f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <a id="logo-text" href="#">
+            <div class="header">
+                <img class="logo" src="Harvard-Logo.png" />
+                <h1 class="font-sans text-gray-950 font-semibold text-4xl">Harvard School of Business</h1>
+            </div>
+        </a>
+    </header>
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div class="relative opacity-50 z-0 inset-0 bg-cover bg-center bg-no-repeat text-white">
+            <div class="text-center">
+                <p class="heading pb-9 text-3xl font-semibold tracking-tight text-balance text-gray-950 sm:text-4xl">
+                    Provide us your valuable feedback</p>
+                <div class="flex justify-center">
+                    <article id="welcome-back" class="flex flex-col items-center text-center text-lg mb-10 font-medium text-gray-900 w-1/2 hidden">
+                        <p id="welcome"></p>
+                    </article>
+                </div>
+                <div class="form-wrapper">
+                    <div class="login-form">
+                        <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Full Name
+                        </p>
+                        <input type="text" id="name" name="name" placeholder="Enter your name">
+                        <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Email</p>
+                        <input type="email" id="email" name="email" placeholder="Enter your email ID">
+                        <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Department
+                        </p>
+                        <select name="dept" id="dept">
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Management">Management</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Foreign Studies">Foreign Studies</option>
+                        </select>
+                        <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Session
+                            Rating</p>
+                        <div class="flex justify-center gap-x-6 mt-2">
+                            <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                <input type="radio" name="rating" value="1" class="text-gray-600 focus:ring-pink-500"> 1
+                            </label>
+                            <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                <input type="radio" name="rating" value="2" class="text-gray-600 focus:ring-pink-500"> 2
+                            </label>
+                            <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                <input type="radio" name="rating" value="3" class="text-gray-600 focus:ring-pink-500"> 3
+                            </label>
+                            <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                <input type="radio" name="rating" value="4" class="text-gray-600 focus:ring-pink-500"> 4
+                            </label>
+                            <label class="text-md font-medium text-gray-900 flex items-center gap-x-2">
+                                <input type="radio" name="rating" value="5" class="text-gray-600 focus:ring-pink-500"> 5
+                            </label>
+                        </div>
+                        <p class="mt-8 text-left text-lg font-medium text-pretty text-gray-900 sm:text-xl/8">Comments</p>
+                        <textarea id="comm" name="comm" rows="4" cols="50" placeholder="Enter your comments"></textarea>
+                        <p id="char-count" class="text-sm text-gray-600">Characters: 0</p>
+                        <div class="buttons flex gap-6">
+                            <button id="clearbtn">Clear</button>
+                            <button id="savebtn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="all-feedbacks" class="flex flex-wrap justify-center gap-6 mt-10 mb-8"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Shreeya Bajpai</p>
+        <p>2nd August 2025</p>
+        <p>Harvard School of Business does in no way refer to the real Harvard Business School</p>
+    </footer>
+</body>
+<script>
+    function clearDetails() {
+        document.querySelector("#name").value = "";
+        document.querySelector("#email").value = "";
+        document.querySelector("#dept").selectedIndex = 0;
+        const selectedRadio = document.querySelector('input[name="rating"]:checked');
+        if (selectedRadio) {
+            selectedRadio.checked = false;
+        }
+        document.querySelector("#comm").value = "";
+        document.getElementById("char-count").textContent = "Characters: 0"
+    };
+    function saveDetails() {
+        event.preventDefault();
+        const nameValue = document.querySelector("#name").value;
+        const emailValue = document.querySelector("#email").value;
+        const deptValue = document.querySelector("#dept").value;
+        const selected = document.querySelector('input[name="rating"]:checked');
+        const commValue = document.querySelector("#comm").value;
+        if (!selected) {
+            alert("Please select a session rating.");
+            return;
+        }
+        const selectedRating = selected.value;
+        const feedback = {
+            name: nameValue,
+            email: emailValue,
+            department: deptValue,
+            rating: selectedRating,
+            comments: commValue,
+        };
+        let feedbackList = JSON.parse(localStorage.getItem("feedbackSubmissions")) || [];
+        feedbackList.push(feedback);
+        localStorage.setItem("feedbackSubmissions", JSON.stringify(feedbackList));
+        sessionStorage.setItem("visited", "true");
+        alert("Feedback received!");
+        displayAllFeedbacks();
+        welcomeBackUser(nameValue);
+    }
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener('change', function () {
+            document.querySelectorAll('label').forEach(label => {
+                label.classList.remove('highlighted');
+            });
+            if (this.checked) {
+                this.parentNode.classList.add('highlighted');
+            }
+        });
+    });
+    document.getElementById("comm").addEventListener("input", function() {
+        const charCount = this.value.length;
+        document.getElementById("char-count").textContent = "Characters: " + charCount;
+    });
+
+    function displayAllFeedbacks() {
+        const feedbackList = JSON.parse(localStorage.getItem("feedbackSubmissions")) || [];
+        const container = document.getElementById("all-feedbacks");
+        container.innerHTML = "";
+        if (feedbackList.length === 0) {
+            container.innerHTML = "<p class='text-gray-600'>No feedback submitted yet.</p>";
+            return;
+        }
+        feedbackList.forEach(feedback => {
+            const card = document.createElement("div");
+            card.className = "bg-white border border-gray-300 rounded-lg shadow-[0_4px_6px_rgba(250,40,120,0.4)] p-6 w-full sm:w-96";
+            card.innerHTML = `
+                <p class="text-sm text-gray-800"><strong>Name: </strong>${feedback.name}</p>
+                <p class="text-sm text-gray-800"><strong>Email:</strong> ${feedback.email}</p>
+                <p class="text-sm text-gray-800"><strong>Department:</strong> ${feedback.department}</p>
+                <p class="text-sm text-gray-800"><strong>Rating:</strong> ${feedback.rating}</p>
+                <p class="text-sm text-gray-800"><strong>Comments:</strong> ${feedback.comments || "None"}</p>
+            `;
+            container.appendChild(card);
+        });
+    };
+    function welcomeBackUser(userName) {
+        const welcomeBackElement = document.getElementById("welcome-back");
+        const welcomeText = document.getElementById("welcome");
+        welcomeBackElement.classList.remove("hidden");
+        welcomeText.textContent = "Welcome Back " + userName + "!";
+    }
+    window.onload = function () {
+        displayAllFeedbacks();
+        document.getElementById("clearbtn").addEventListener("click", clearDetails);
+        document.getElementById("savebtn").addEventListener("click", saveDetails);
+        const visited = sessionStorage.getItem("visited");
+        const name = sessionStorage.getItem("name");
+        if (visited && name) {
+            showWelcomeBackMessage(name);
+        }
+    };
+
+</script>
+<style>
+    .logo {
+        height: 140px;
+        width: 230px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer {
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        color: darksalmon;
+        font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #fa2878;
+        position: absolute;
+        left: 0;
+        right: 0;
+        /* border-radius: 8px; */
+        font-family: helvetica;
+        font-weight: 600;
+    }
+
+    .navbar>p {
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 100px;
+    }
+
+    .navbar:hover {
+        height: 51.26px;
+    }
+
+    #logo-text {
+        text-decoration: none;
+        color: #292827;
+        font-family: arial sans-serif;
+        display: block;
+    }
+
+    #nav-link {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-style: bold;
+    }
+
+    #nav-link:hover {
+        font-size: 18px;
+    }
+
+    .form-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        border: solid #fa2878 2px;
+        border-radius: 20px;
+        width: max-content;
+        padding: 50px;
+        /* font-family: Arial, sans-serif; */
+    }
+
+    .login-form input[type="text"],
+    .login-form select,
+    .login-form input[type="email"],
+    .login-form textarea {
+        color: black;
+    }
+
+    .login-form input[type="text"],
+    .login-form select,
+    .login-form input[type="email"],
+    .login-form textarea {
+        width: 300px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        /* font-size: 16px; */
+        transition: border-color 0.3s;
+    }
+
+    .login-form input[type="text"]:focus,
+    .login-form input[type="email"]:focus,
+    .login-form select:focus,
+    .login-form textarea:focus {
+        border-color: #fa2878;
+        outline: none;
+    }
+
+    .login-form select,
+    .login-form select option {
+        color: black;
+        background-color: white;
+    }
+
+    #savebtn {
+        padding: 10px 20px;
+        margin-top: 25px;
+        background-color: #f7166d;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+    #savebtn:hover {
+        background-color: #870738;
+    }
+    #clearbtn {
+        padding: 10px 20px;
+        margin-top: 25px;
+        background-color: lightgrey;
+        color: black;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+    #clearbtn:hover{
+        background-color: darkgray;
+    }
+
+    #feedback-received p {
+        margin: 4px 0;
+    }
+
+    .highlighted {
+        background-color: #fa2878;
+        /* Tailwind's bg-pink-500 */
+        color: white;
+        border-radius: 8px;
+        padding: 5px;
+    }
+</style>
+
+</html>
