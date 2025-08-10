@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Pet Product Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#facdd4]"> 
+    <a id="logo-text" href="" class="block no-underline text-[#292827] bg-white font-sans">
+        <div class="header flex items-center gap-4">
+            <img class="logo" src="logo.png" alt="Logo" />
+            <h1 class="text-xl font-bold">Happy Tails Veterinary Hospital & Kennel Center</h1>
+        </div>
+    </a>
+
+    <div class="p-6">
+        <div class="flex flex-wrap gap-4 mb-6 justify-end">
+            <div>
+                <label class="block mb-1 text-gray-700 font-medium">Category</label>
+                <select id="categorySelect" class="border px-4 py-2 rounded">
+                    <option value="">All</option>
+                    <option value="Raincoat">Raincoat</option>
+                    <option value="Bow">Bow</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Hoodie">Hoodie</option>
+                    <option value="Collar">Collar</option>
+                    <option value="Costume">Costume</option>
+                    <option value="Backpack">Backpack</option>
+                    <option value="Bandana">Bandana</option>
+                    <option value="Blanket">Blanket</option>
+                    <option value="Harness">Harness</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block mb-1 text-gray-700 font-medium">Species</label>
+                <select id="speciesSelect" class="border px-4 py-2 rounded">
+                    <option value="">All</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                </select>
+            </div>
+
+            <div class="flex justify-items-end items-center gap-2 mt-6">
+                <input type="checkbox" id="availabilityToggle" class="accent-[#fa2878] w-5 h-5" />
+                <label for="availabilityToggle" class="text-gray-700 font-medium">Available Only</label>
+            </div>
+
+            <div>
+                <button id="savebtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold mb-6 text-gray-800">Happy Tails Pet Products</h1>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full border border-gray-300 text-sm text-left">
+                    <thead class="bg-gray-200 text-gray-700 uppercase">
+                        <tr>
+                            <th class="px-4 py-2 border">Name</th>
+                            <th class="px-4 py-2 border">Category</th>
+                            <th class="px-4 py-2 border">Species</th>
+                            <th class="px-4 py-2 border">Available</th>
+                            <th class="px-4 py-2 border">Pricing</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody" class="bg-white text-gray-800">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:8000/api";
+
+        const categorySelect = document.getElementById("categorySelect");
+        const speciesSelect = document.getElementById("speciesSelect");
+        const availabilityToggle = document.getElementById("availabilityToggle");
+        const savebtn = document.getElementById("savebtn");
+        const tableBody = document.getElementById("productTableBody");
+
+        async function fetchFilteredData() {
+            const category = categorySelect.value;
+            const species = speciesSelect.value;
+            const isAvailable = availabilityToggle.checked ? "true" : "";
+
+            const params = new URLSearchParams();
+
+            if (category) params.append("category", category);
+            if (species) params.append("species_applicable", species);
+            if (isAvailable) params.append("is_available", isAvailable);
+
+            const url = `${API_URL}?${params.toString()}`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                renderTable(data);
+            } catch (error) {
+                console.error("Fetch error:", error);
+                tableBody.innerHTML = `<tr><td colspan="5" class="text-center text-red-500 py-4">Failed to load data</td></tr>`;
+            }
+        }
+
+        function renderTable(products) {
+            tableBody.innerHTML = "";
+
+            if (products.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="5" class="text-center text-gray-500 py-4">No products found</td></tr>`;
+                return;
+            }
+
+            products.forEach(product => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+          <td class="px-4 py-2 border font-medium">${product.name}</td>
+          <td class="px-4 py-2 border">${product.category}</td>
+          <td class="px-4 py-2 border">${product.species_applicable.join(", ")}</td>
+          <td class="px-4 py-2 border">${product.is_available}</td>
+          <td class="px-4 py-2 border">
+            ${product.pricing.map(p => `<div>${p.size}:  Rs.${p.amount}</div>`).join("")}
+          </td>
+        `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        window.onload = fetchFilteredData;
+        savebtn.addEventListener("click", fetchFilteredData);
+    </script>
+</body>
+<style>
+    .logo{
+        height: 140px;
+        width: 140px;
+    }
+    #savebtn {
+        padding: 10px 20px;
+        margin-top: 25px;
+        background-color: #fa2878;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #savebtn:hover {
+        background-color: #d11f66;
+    }
+</style>
+
+</html>
