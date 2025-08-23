@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Tails Kennel Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+    <a href="#" class="block text-[#292827] no-underline">
+        <div class="flex items-center">
+            <img src="logo.png" alt="Logo" class="w-[140px] h-[140px]" />
+            <div class="text-black text-4xl font-bold ml-4">
+                Happy Tails Kennel Center
+            </div>
+        </div>
+    </a>
+    <nav class="flex justify-end bg-[#fa2878] font-semibold text-white px-6 py-3 mb-6 space-x-6">
+        <a href="#" class="text-white no-underline hover:font-bold text-base">Home</a>
+        <a href="admin.html" class="text-white no-underline hover:font-bold text-base">Admin</a>
+    </nav>
+</header>
+<div class="bg-gray-100 p-6">
+    <h1 class="text-3xl font-bold text-center text-black-600 mb-6">
+    Happy Tails Kennel Booking
+  </h1>
+
+  <section class="bg-white shadow-lg rounded-lg p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4">Available Kennels</h2>
+    <button onclick="loadKennels()" class="bg-[#fa2878] text-white px-4 py-2 rounded mb-4">Load Kennels</button>
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="p-2">ID</th>
+          <th class="p-2">Name</th>
+          <th class="p-2">Type</th>
+          <th class="p-2">Size</th>
+          <th class="p-2">Fee per Day</th>
+        </tr>
+      </thead>
+      <tbody id="kennelsTable"></tbody>
+    </table>
+  </section>
+
+  <section class="bg-white shadow-lg rounded-lg p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4">Book a Kennel Stay</h2>
+    <form id="bookKennelForm" class="space-y-4">
+      <input type="text" id="owner_name" placeholder="Name of Owner" class="border p-2 w-full rounded" required>
+      <input type="text" id="p_no" placeholder="Phone Number" class="border p-2 w-full rounded" required>
+      <input type="text" id="pet_name" placeholder="Name of Pet" class="border p-2 w-full rounded" required>
+      <input type="text" id="species" placeholder="Species" class="border p-2 w-full rounded" required>
+      <input type="number" id="tot_days" placeholder="Number of Days of Stay" class="border p-2 w-full rounded" required>
+      <input type="number" id="kennel_id" placeholder="Kennel ID" class="border p-2 w-full rounded" required>
+      <button class="bg-[#fa2878] text-white px-4 py-2 rounded">Book Kennel Now</button>
+    </form>
+  </section>
+  <section class="bg-white shadow-lg rounded-lg p-6 mb-6 hidden">
+        <h2 class="text-xl font-semibold mb-4">Add New Kennel</h2>
+        <form id="addKennelForm" class="space-y-4">
+            <input type="text" id="name" placeholder="Kennel Name" class="border p-2 w-full rounded"
+                required>
+            <input type="text" id="type" placeholder="Type" class="border p-2 w-full rounded" required>
+            <input type="text" id="size" placeholder="Size" class="border p-2 w-full rounded" required>
+            <input type="number" id="fee" placeholder="Fee per Day" class="border p-2 w-full rounded" required>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Add Kennel</button>
+        </form>
+    </section>
+</div>
+
+</body>
+</html>
